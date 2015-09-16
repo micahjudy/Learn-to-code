@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="post">
+		<form method="post" action="/comments" class="post">
+				<br>
+				<h2 class="style">
+				Add information and click 'Add Comment' button.
+				</h2>
+				<label>
+				Your name (or Nickname):
+				<input type="text" name="authors" value="anonymous">
+				</label>
+				<label>
+				Comment:
+				<input type="text" name="contents" value="none" id="commentBox">
+				</label>
+				<select  name="lesson" >
+					<option value="Lesson 1">Lesson 1 - The Internet</option>
+					<option value="Lesson 2">Lesson 2 - Structure</option>
+					<option value="Lesson 3">Lesson 3 - Styling</option>
+					<option value="Lesson 4">Lesson 4 - Programming</option>
+					<option value="Lesson 5">Lesson 5 - Veriables</option>
+					<option value="Lesson 6">Lesson 6 - Functions</option>
+					<option value="Lesson 7">Lesson 7 - OOP</option>
+					<option value="Lesson 8">Lesson 8 - Servers</option>
+				</select>
+				<br>
+				<br>
+				<div>
+				<input type="submit" value="Add Comment" id="submit" class="button">
+				</div>
+				<hr>
+		</form>
+		{% for tPost in posts %}
+	  	<div>
+	  		<strong> {{tPost["authors"]}} </strong>-- <strong> {{tPost["lesson"]}}</strong> -- <strong>wrote:</strong>
+      		<blockquote> {{tPost["contents"]}} </blockquote>
+      	</div>
+		{% endfor %}	
+	</div>
+{% endblock content %}
